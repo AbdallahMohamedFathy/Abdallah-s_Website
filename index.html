@@ -374,6 +374,38 @@
 
   <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
+  <!-- Floating Contact Button -->
+  <div class="floating-contact">
+    <div class="contact-btn" id="openModalBtn">
+      <i class="fas fa-comment-dots"></i>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModalBtn">&times;</span>
+      <h3>Contact Me</h3>
+      <form id="floating-contact-form">
+        <div class="form-group">
+          <div class="field">
+            <input type="text" name="name" placeholder="Name" required>
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="field">
+            <input type="email" name="email" placeholder="Email" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="message">
+            <textarea name="message" placeholder="Message" required></textarea>
+            <i class="fas fa-comment-dots"></i>
+          </div>
+          <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="./assets/js/script.js"></script>
 
 </body>
