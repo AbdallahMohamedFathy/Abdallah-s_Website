@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    // Initialize EmailJS
+    emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
+
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('nav-toggle');
@@ -42,8 +45,6 @@ window.onclick = function (event) {
 
 // EmailJS for floating contact form
 $("#floating-contact-form").submit(function (event) {
-    emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
-
     emailjs.sendForm('contact_service', 'template_contact', '#floating-contact-form')
         .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
@@ -52,7 +53,7 @@ $("#floating-contact-form").submit(function (event) {
             alert("Message Sent Successfully!");
         }, function (error) {
             console.log('FAILED...', error);
-            alert("Message Failed to Send! Please try again later.");
+            alert("Message Failed to Send! " + error.text || error.message || "Please try again later.");
         });
     event.preventDefault();
 });

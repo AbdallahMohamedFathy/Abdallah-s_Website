@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    // Initialize EmailJS
+    emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
+
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('nav-toggle');
@@ -39,8 +42,6 @@ $(document).ready(function () {
 
     // <!-- emailjs to mail contact form data -->
     $("#contact-form").submit(function (event) {
-        emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
-
         emailjs.sendForm('contact_service', 'template_contact', '#contact-form')
             .then(function (response) {
                 console.log('SUCCESS!', response.status, response.text);
@@ -48,7 +49,7 @@ $(document).ready(function () {
                 alert("Form Submitted Successfully");
             }, function (error) {
                 console.log('FAILED...', error);
-                alert("Form Submission Failed! Try Again");
+                alert("Form Submission Failed! " + error.text || error.message || "Try Again");
             });
         event.preventDefault();
     });
@@ -79,8 +80,6 @@ $(document).ready(function () {
 
     // EmailJS for floating contact form
     $("#floating-contact-form").submit(function (event) {
-        emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
-
         emailjs.sendForm('contact_service', 'template_contact', '#floating-contact-form')
             .then(function (response) {
                 console.log('SUCCESS!', response.status, response.text);
@@ -89,7 +88,7 @@ $(document).ready(function () {
                 alert("Message Sent Successfully!");
             }, function (error) {
                 console.log('FAILED...', error);
-                alert("Message Failed to Send! Please try again later.");
+                alert("Message Failed to Send! " + error.text || error.message || "Please try again later.");
             });
         event.preventDefault();
     });
@@ -147,7 +146,7 @@ function showSkills(skills) {
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
-    projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
+    projects.slice(0, 10).forEach(project => {
         projectHTML += `
         <div class="box tilt">
       <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
